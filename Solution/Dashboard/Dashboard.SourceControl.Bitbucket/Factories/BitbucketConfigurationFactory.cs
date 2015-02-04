@@ -9,6 +9,7 @@ namespace Dashboard.SourceControl.Bitbucket.Factories
         private const string BitbucketPassword = "Bitbucket.Password";
         private const string BitbucketUsername = "Bitbucket.Username";
         private const string BitbucketTeamName = "Bitbucket.TeamName";
+        private const string BitbucketApiTimeoutSeconds = "Bitbucket.API.Timeout.Seconds";
         private const string BitbucketApiEndPointUsers = "Bitbucket.API.Endpoint.Ussers"; 
         private const string BitbucketApiEndPointTeams = "Bitbucket.API.Endpoint.Teams";
 
@@ -26,6 +27,7 @@ namespace Dashboard.SourceControl.Bitbucket.Factories
                 BitbucketPassword = configurationRepository.GetSimpleSetting<string>(BitbucketPassword),
                 BitbucketUsername = configurationRepository.GetSimpleSetting<string>(BitbucketUsername),
                 BitbucketTeamName = configurationRepository.GetSimpleSetting<string>(BitbucketTeamName),
+                BitbucketApiTimeoutSeconds = configurationRepository.GetSimpleSetting<int>(BitbucketApiTimeoutSeconds),
                 BitbucketApiEndPointUsers = configurationRepository.GetSimpleSetting<string>(BitbucketApiEndPointUsers),
                 BitbucketApiEndPointTeams = configurationRepository.GetSimpleSetting<string>(BitbucketApiEndPointTeams)
             };

@@ -10,6 +10,8 @@ namespace Dashboard.SourceControl.Bitbucket.Configuration
 
         public string BitbucketTeamName { get; set; }
 
+        public int BitbucketApiTimeoutSeconds { get; set; }
+
         public string BitbucketApiEndPointUsers { get; set; }
 
         public string BitbucketApiEndPointTeams { get; set; }

@@ -57,12 +57,17 @@
     <Compile Include="Contracts\IHttpClient.cs" />
     <Compile Include="Contracts\IQueryExecutionResult.cs" />
     <Compile Include="Contracts\QueryExecutionResult.cs" />
+    <Compile Include="Extensions\JsonExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\ErrorQueryExecutionResult.cs" />
     <Compile Include="Query\ExceptionQueryExecutionResult.cs" />
     <Compile Include="Query\IQuery.cs" />
     <Compile Include="Query\NotFoundErrorQueryExecutionResult.cs" />
     <Compile Include="Query\SuccessfulQueryExecutionResult.cs" />
+    <Compile Include="Web\CustomWebClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Web\HttpClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -8,6 +8,8 @@
 
         string BitbucketTeamName { get; }
 
+        int BitbucketApiTimeoutSeconds { get; }
+
         string BitbucketApiEndPointUsers { get; }
 
         string BitbucketApiEndPointTeams { get; }
