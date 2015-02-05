@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Dashboard.SourceControl.Contracts;
 
 namespace Dashboard.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IAccountByUserNameQuery accountByUserNameQuery;
+
+        public HomeController(IAccountByUserNameQuery accountByUserNameQuery)
+        {
+            this.accountByUserNameQuery = accountByUserNameQuery;
+        }
+
         public ActionResult Index()
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
