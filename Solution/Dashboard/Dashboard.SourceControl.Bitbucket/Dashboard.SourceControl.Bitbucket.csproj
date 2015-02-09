@@ -64,7 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Clients\BitbucketClient.cs" />
     <Compile Include="Configuration\BitbucketConfiguration.cs" />
+    <Compile Include="Contracts\IBitbucketClient.cs" />
     <Compile Include="Contracts\IBitbucketConfiguration.cs" />
     <Compile Include="Contracts\IBitbucketConfigurationFactory.cs" />
     <Compile Include="Entities\AccountByUserNameQueryResult.cs" />
@@ -88,6 +90,7 @@
       <Name>Dashboard.SourceControl</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

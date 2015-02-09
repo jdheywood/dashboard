@@ -72,6 +72,20 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dashboard.Core\Dashboard.Core.csproj">
+      <Project>{48A74254-B3FF-41FF-806B-48D5D5225631}</Project>
+      <Name>Dashboard.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dashboard.SourceControl.Bitbucket\Dashboard.SourceControl.Bitbucket.csproj">
+      <Project>{5111E02F-2B31-4113-AB4D-720D42B0A98A}</Project>
+      <Name>Dashboard.SourceControl.Bitbucket</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dashboard.SourceControl\Dashboard.SourceControl.csproj">
+      <Project>{FC7DAF61-6714-42F3-A74D-7D9B43579C92}</Project>
+      <Name>Dashboard.SourceControl</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
