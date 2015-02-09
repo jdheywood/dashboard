@@ -29,6 +29,7 @@ namespace Dashboard.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
 
+            // TODO move out to its own class, also register mappings etc...
             var container = new Container();
 
             var queryAssembly = typeof (AccountByUserNameQuery).Assembly;

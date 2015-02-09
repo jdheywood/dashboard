@@ -28,7 +28,7 @@ namespace Dashboard.SourceControl.Bitbucket.Queries
 
             var result = jsonResult.FromJson<AccountByUserNameQueryResult>();
 
-            var queryResult = AutoMapper.Mapper.Map<Account>(result);
+            var queryResult = AutoMapper.Mapper.Map<Account>(result); // TODO need to set up/complete the mappings
 
             return queryResult;
         }

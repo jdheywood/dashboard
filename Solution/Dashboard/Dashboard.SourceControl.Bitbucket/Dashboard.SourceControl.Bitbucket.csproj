@@ -70,6 +70,7 @@
     <Compile Include="Entities\AccountByUserNameQueryResult.cs" />
     <Compile Include="Entities\AccountLink.cs" />
     <Compile Include="Factories\BitbucketConfigurationFactory.cs" />
+    <Compile Include="Mapping\BitbucketToDomainMappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\AccountByUserNameQuery.cs" />
   </ItemGroup>
