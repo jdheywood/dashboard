@@ -35,10 +35,10 @@ namespace Dashboard.Web
             var queryAssembly = typeof (AccountByUserNameQuery).Assembly;
 
             var registrations =
-                from type in queryAssembly.GetExportedTypes()
-                where type.Namespace == "Dashboard.SourceControl.Bitbucket.Queries"
-                where type.GetInterfaces().Any()
-                select new {Query = type.GetInterfaces().Single(), Implementation = type};
+                queryAssembly.GetExportedTypes()
+                    .Where(type => type.Namespace == "Dashboard.SourceControl.Bitbucket.Queries")
+                    .Where(type => type.GetInterfaces().Any())
+                    .Select(type => new {Query = type.GetInterfaces().Single(), Implementation = type});
 
             foreach (var reg in registrations)
             {

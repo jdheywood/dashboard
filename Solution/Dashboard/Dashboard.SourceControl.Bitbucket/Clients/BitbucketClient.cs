@@ -1,5 +1,4 @@
 ﻿using System;
-using System.CodeDom;
 using Dashboard.Core.Contracts;
 using Dashboard.SourceControl.Bitbucket.Contracts;
 
@@ -19,16 +18,22 @@ namespace Dashboard.SourceControl.Bitbucket.Clients
 
         public string GetUserJson(string userName)
         {
-            throw new NotImplementedException();
+            var configuration = bitbucketConfigurationFactory.Create();
+
+            return httpClient.GetJson(configuration.BitbucketApiEndPointUsers, configuration.BitbucketApiTimeoutSeconds);
         }
 
         public string GetTeamJson(string teamName)
         {
-            throw new NotImplementedException();
+            var configuration = bitbucketConfigurationFactory.Create();
+
+            return httpClient.GetJson(configuration.BitbucketApiEndPointTeams, configuration.BitbucketApiTimeoutSeconds);
         }
 
         public string GetRepositoryJson(string repositoryName)
         {
+            // TODO wire up to return httpClient.GetJson(...)
+
             throw new NotImplementedException();
         }
     }

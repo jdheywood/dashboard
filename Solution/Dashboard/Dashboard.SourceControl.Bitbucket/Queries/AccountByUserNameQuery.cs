@@ -1,5 +1,5 @@
-﻿using Dashboard.Core.Extensions;
-using Dashboard.Core.Web;
+﻿using Dashboard.Core.Contracts;
+using Dashboard.Core.Extensions;
 using Dashboard.SourceControl.Bitbucket.Contracts;
 using Dashboard.SourceControl.Bitbucket.Entities;
 using Dashboard.SourceControl.Contracts;
@@ -9,26 +9,22 @@ namespace Dashboard.SourceControl.Bitbucket.Queries
 {
     public class AccountByUserNameQuery : IAccountByUserNameQuery
     {
-        private IBitbucketConfigurationFactory bitbucketConfigurationFactory;
-        
-        private readonly HttpClient httpClient;
+        private readonly IBitbucketClient bitbucketClient;
+        private readonly IMapper mapper;
 
-        public AccountByUserNameQuery()
+        public AccountByUserNameQuery(IBitbucketClient bitbucketClient, IMapper mapper)
         {
-            httpClient = new HttpClient();
+            this.bitbucketClient = bitbucketClient;
+            this.mapper = mapper;
         }
 
         public Account Execute(string userName)
         {
-            // TODO - use factory to get config to then form request to bitbucket api and return and then map json to domain entity
-
-            var configuration = bitbucketConfigurationFactory.Create();
-
-            var jsonResult = httpClient.GetJson(configuration.BitbucketApiEndPointUsers, configuration.BitbucketApiTimeoutSeconds);
+            var jsonResult = bitbucketClient.GetUserJson(userName);
 
             var result = jsonResult.FromJson<AccountByUserNameQueryResult>();
 
-            var queryResult = AutoMapper.Mapper.Map<Account>(result); // TODO need to set up/complete the mappings
+            var queryResult = mapper.Map<Account>(result); // TODO need to set up/complete the mappings
 
             return queryResult;
         }
