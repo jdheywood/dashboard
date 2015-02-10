@@ -1,4 +1,6 @@
 ﻿using Dashboard.Core.Contracts;
+using Dashboard.Core.Extensions;
+using Dashboard.Core.Query;
 using Dashboard.SourceControl.Bitbucket.Contracts;
 using Dashboard.SourceControl.Contracts;
 using Dashboard.SourceControl.Entities;
@@ -16,13 +18,15 @@ namespace Dashboard.SourceControl.Bitbucket.Queries
             this.mapper = mapper;
         }
 
-        public Account Execute(string userName)
+        public IQueryExecutionResult<Account> Execute(string userName)
         {
             var result = bitbucketClient.GetUserAccount(userName);
 
             var queryResult = mapper.Map<Account>(result); // TODO need to set up/complete the mappings
 
-            return queryResult;
+            return queryResult == null
+                ? (IQueryExecutionResult<Account>)"Problem retrieving account by username".ToNotFoundQueryExecutionResult<Account>()
+                : new SuccessfulQueryExecutionResult<Account>(queryResult);
         }
     }
 }

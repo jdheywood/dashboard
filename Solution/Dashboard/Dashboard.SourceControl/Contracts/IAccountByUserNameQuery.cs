@@ -1,9 +1,10 @@
-﻿using Dashboard.SourceControl.Entities;
+﻿using Dashboard.Core.Contracts;
+using Dashboard.SourceControl.Entities;
 
 namespace Dashboard.SourceControl.Contracts
 {
     public interface IAccountByUserNameQuery
     {
-        Account Execute(string userName);
+        IQueryExecutionResult<Account> Execute(string userName);
     }
 }

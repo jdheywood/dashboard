@@ -1,6 +1,7 @@
 ﻿using System;
 using Dashboard.Core.Contracts;
 using Dashboard.Core.Extensions;
+using Dashboard.Core.Query;
 using Dashboard.SourceControl.Bitbucket.Contracts;
 using Dashboard.SourceControl.Bitbucket.Entities;
 using Dashboard.SourceControl.Bitbucket.Queries;
@@ -29,7 +30,7 @@ namespace Dashboard.SourceControl.Bitbucket.UnitTests.Queries
         public class Execute : AccountByUserNameQueryTests
         {
             [Test]
-            public void When_Called_With_Valid_Individual_Account_Name_Returns_Populated_Account_Object()
+            public void When_Called_With_Valid_Individual_Account_Name_Returns_SuccessfulQueryExecutionResult_With_Populated_Account_Object()
             {
                 // Arrange
                 var fixture = new Fixture();
@@ -46,12 +47,12 @@ namespace Dashboard.SourceControl.Bitbucket.UnitTests.Queries
                 var actualResult = accountByUserNameQuery.Execute(userName);
 
                 // Assert
-                Assert.IsInstanceOf<Account>(actualResult);
-                Assert.AreEqual(account, actualResult);
+                Assert.IsInstanceOf<SuccessfulQueryExecutionResult<Account>>(actualResult);
+                Assert.AreEqual(account, actualResult.Result);
             }
 
             [Test]
-            public void When_Called_With_Invalid_Individual_Account_Name_Returns_Null()
+            public void When_Called_With_Invalid_Individual_Account_Name_Returns_NotFoundErrorQueryExecutionResult()
             {
                 // Arrange
                 var fixture = new Fixture();
@@ -68,7 +69,7 @@ namespace Dashboard.SourceControl.Bitbucket.UnitTests.Queries
                 var actualResult = accountByUserNameQuery.Execute(userName);
 
                 // Assert
-                Assert.IsNull(actualResult);
+                Assert.IsInstanceOf<NotFoundErrorQueryExecutionResult<Account>>(actualResult);
             }
         }
 
