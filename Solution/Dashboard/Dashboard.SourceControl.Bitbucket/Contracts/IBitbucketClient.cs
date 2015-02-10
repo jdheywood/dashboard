@@ -1,11 +1,13 @@
-﻿namespace Dashboard.SourceControl.Bitbucket.Contracts
+﻿using Dashboard.SourceControl.Bitbucket.Entities;
+
+namespace Dashboard.SourceControl.Bitbucket.Contracts
 {
     public interface IBitbucketClient
     {
-        string GetUserJson(string userName);
-
-        string GetTeamJson(string teamName);
-
-        string GetRepositoryJson(string repositoryName);
+        AccountByUserNameQueryResult GetUserAccount(string userName);
+        
+        AccountByTeamNameQueryResult GetTeamAccount(string teamName);
+        
+        string GetRepository(string repositoryName);
     }
 }

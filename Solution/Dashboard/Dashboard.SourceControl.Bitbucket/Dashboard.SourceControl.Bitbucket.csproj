@@ -69,6 +69,7 @@
     <Compile Include="Contracts\IBitbucketClient.cs" />
     <Compile Include="Contracts\IBitbucketConfiguration.cs" />
     <Compile Include="Contracts\IBitbucketConfigurationFactory.cs" />
+    <Compile Include="Entities\AccountByTeamNameQueryResult.cs" />
     <Compile Include="Entities\AccountByUserNameQueryResult.cs" />
     <Compile Include="Entities\AccountLink.cs" />
     <Compile Include="Factories\BitbucketConfigurationFactory.cs" />

@@ -1,6 +1,8 @@
 ﻿using System;
 using Dashboard.Core.Contracts;
+using Dashboard.Core.Extensions;
 using Dashboard.SourceControl.Bitbucket.Contracts;
+using Dashboard.SourceControl.Bitbucket.Entities;
 
 namespace Dashboard.SourceControl.Bitbucket.Clients
 {
@@ -15,22 +17,25 @@ namespace Dashboard.SourceControl.Bitbucket.Clients
             this.httpClient = httpClient;
         }
 
-
-        public string GetUserJson(string userName)
+        public AccountByUserNameQueryResult GetUserAccount(string userName)
         {
             var configuration = bitbucketConfigurationFactory.Create();
 
-            return httpClient.GetJson(configuration.BitbucketApiEndPointUsers, configuration.BitbucketApiTimeoutSeconds);
+            var jsonResult = httpClient.GetJson(configuration.BitbucketApiEndPointUsers, configuration.BitbucketApiTimeoutSeconds);
+
+            return jsonResult.FromJson<AccountByUserNameQueryResult>();
         }
 
-        public string GetTeamJson(string teamName)
+        public AccountByTeamNameQueryResult GetTeamAccount(string teamName)
         {
             var configuration = bitbucketConfigurationFactory.Create();
 
-            return httpClient.GetJson(configuration.BitbucketApiEndPointTeams, configuration.BitbucketApiTimeoutSeconds);
+            var jsonResult = httpClient.GetJson(configuration.BitbucketApiEndPointTeams, configuration.BitbucketApiTimeoutSeconds);
+
+            return jsonResult.FromJson<AccountByTeamNameQueryResult>();
         }
 
-        public string GetRepositoryJson(string repositoryName)
+        public string GetRepository(string repositoryName)
         {
             // TODO wire up to return httpClient.GetJson(...)
 

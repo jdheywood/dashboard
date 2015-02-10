@@ -36,19 +36,11 @@ namespace Dashboard.SourceControl.Bitbucket.UnitTests.Queries
 
                 var userName = fixture.Create("valid-username");
                 var result = fixture.Create<AccountByUserNameQueryResult>();
-                var jsonResult = result.ToJson();
                 var account = fixture.Create<Account>();
 
-                bitbucketClient.GetUserJson(userName).Returns(jsonResult);
+                bitbucketClient.GetUserAccount(userName).Returns(result);
 
-                // So this only works when I set the arg to any object of the type, not the specific one, 
-                // because the object I set up here is not the one returned from the .FromJson call in the actual query 
-                // as I have not substituted that method... which is a static extension method so proving a little tricky to sub...
-                mapper.Map<Account>(Arg.Any<AccountByUserNameQueryResult>()).Returns(account);
-
-                // We'd want to do something along the lines of; 
-                // jsonResult.FromJson<AccountByUserNameQueryResult>().Returns(result);
-                // To achieve this we may be able to use partial subs (see NSubstitute docs) and sub out the FromJson static method
+                mapper.Map<Account>(Arg.Is(result)).Returns(account);
 
                 // Act
                 var actualResult = accountByUserNameQuery.Execute(userName);
@@ -65,11 +57,10 @@ namespace Dashboard.SourceControl.Bitbucket.UnitTests.Queries
                 var fixture = new Fixture();
 
                 var userName = fixture.Create("invalid-username");
-                var result = String.Empty;
-                var jsonResult = result.ToJson();
+                AccountByUserNameQueryResult result = null;
                 Account account = null;
 
-                bitbucketClient.GetUserJson(userName).Returns(jsonResult);
+                bitbucketClient.GetUserAccount(userName).Returns(result);
 
                 mapper.Map<Account>(result).Returns(account);
 
