@@ -29,24 +29,9 @@ namespace Dashboard.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
 
-            // TODO move out to its own class, also register mappings etc...
             var container = new Container();
-
-            var queryAssembly = typeof (AccountByUserNameQuery).Assembly;
-
-            var registrations =
-                queryAssembly.GetExportedTypes()
-                    .Where(type => type.Namespace == "Dashboard.SourceControl.Bitbucket.Queries")
-                    .Where(type => type.GetInterfaces().Any())
-                    .Select(type => new {Query = type.GetInterfaces().Single(), Implementation = type});
-
-            foreach (var reg in registrations)
-            {
-                container.Register(reg.Query, reg.Implementation, Lifestyle.Transient);
-            }
-
+            WebContainer.RegisterDependencies(container);
             container.Verify();
-
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
         }
     }

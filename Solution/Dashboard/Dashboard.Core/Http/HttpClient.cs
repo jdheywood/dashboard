@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Net;
 using Dashboard.Core.Contracts;
+using Dashboard.Core.Web;
 
-namespace Dashboard.Core.Web
+namespace Dashboard.Core.Http
 {
     public class HttpClient : IHttpClient
     {

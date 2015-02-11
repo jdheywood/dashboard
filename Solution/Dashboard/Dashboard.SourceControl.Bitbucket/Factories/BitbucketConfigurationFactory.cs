@@ -10,7 +10,7 @@ namespace Dashboard.SourceControl.Bitbucket.Factories
         private const string BitbucketUsername = "Bitbucket.Username";
         private const string BitbucketTeamName = "Bitbucket.TeamName";
         private const string BitbucketApiTimeoutSeconds = "Bitbucket.API.Timeout.Seconds";
-        private const string BitbucketApiEndPointUsers = "Bitbucket.API.Endpoint.Ussers"; 
+        private const string BitbucketApiEndPointUsers = "Bitbucket.API.Endpoint.Users"; 
         private const string BitbucketApiEndPointTeams = "Bitbucket.API.Endpoint.Teams";
 
         private readonly IConfigurationRepository configurationRepository;

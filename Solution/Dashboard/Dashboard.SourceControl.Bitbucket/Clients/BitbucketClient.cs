@@ -21,7 +21,7 @@ namespace Dashboard.SourceControl.Bitbucket.Clients
         {
             var configuration = bitbucketConfigurationFactory.Create();
 
-            var jsonResult = httpClient.GetJson(configuration.BitbucketApiEndPointUsers, configuration.BitbucketApiTimeoutSeconds);
+            var jsonResult = httpClient.GetJson(String.Format("{0}/{1}", configuration.BitbucketApiEndPointUsers, userName), configuration.BitbucketApiTimeoutSeconds);
 
             return jsonResult.FromJson<AccountByUserNameQueryResult>();
         }

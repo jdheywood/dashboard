@@ -112,7 +112,7 @@
     <Compile Include="Web\CustomWebClient.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Web\HttpClient.cs" />
+    <Compile Include="Http\HttpClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

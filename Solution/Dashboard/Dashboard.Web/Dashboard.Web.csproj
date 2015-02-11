@@ -204,6 +204,7 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebContainer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -324,6 +325,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Dashboard.Core\Dashboard.Core.csproj">
+      <Project>{48A74254-B3FF-41FF-806B-48D5D5225631}</Project>
+      <Name>Dashboard.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dashboard.SourceControl.Bitbucket\Dashboard.SourceControl.Bitbucket.csproj">
       <Project>{5111E02F-2B31-4113-AB4D-720D42B0A98A}</Project>
       <Name>Dashboard.SourceControl.Bitbucket</Name>
