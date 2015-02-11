@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\AccountType.cs" />
+    <Compile Include="Contracts\IAccountByTeamNameQuery.cs" />
     <Compile Include="Contracts\IAccountByUserNameQuery.cs" />
     <Compile Include="Entities\Account.cs" />
     <Compile Include="Entities\AccountLink.cs" />

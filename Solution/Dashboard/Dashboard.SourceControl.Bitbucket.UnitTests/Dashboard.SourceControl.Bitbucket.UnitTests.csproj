@@ -83,6 +83,7 @@
   <ItemGroup>
     <Compile Include="LocalAddin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\AccountByTeamNameQueryTests.cs" />
     <Compile Include="Queries\AccountByUserNameQueryTests.cs" />
   </ItemGroup>
   <ItemGroup>

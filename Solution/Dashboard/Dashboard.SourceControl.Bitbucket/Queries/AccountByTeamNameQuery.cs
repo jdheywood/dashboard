@@ -7,25 +7,25 @@ using Dashboard.SourceControl.Entities;
 
 namespace Dashboard.SourceControl.Bitbucket.Queries
 {
-    public class AccountByUserNameQuery : IAccountByUserNameQuery
+    public class AccountByTeamNameQuery : IAccountByTeamNameQuery
     {
         private readonly IBitbucketClient bitbucketClient;
         private readonly IMapper mapper;
 
-        public AccountByUserNameQuery(IBitbucketClient bitbucketClient, IMapper mapper)
+        public AccountByTeamNameQuery(IBitbucketClient bitbucketClient, IMapper mapper)
         {
             this.bitbucketClient = bitbucketClient;
             this.mapper = mapper;
         }
-
-        public IQueryExecutionResult<Account> Execute(string userName)
+        
+        public IQueryExecutionResult<Account> Execute(string teamName)
         {
-            var queryResult = bitbucketClient.GetUserAccount(userName);
-            
-            var mappedAccount = mapper.Map<Account>(queryResult); // TODO need to set up/complete the mappings
+            var queryResult = bitbucketClient.GetTeamAccount(teamName);
 
-            return queryResult == null
-                ? (IQueryExecutionResult<Account>)"Problem retrieving account by username".ToNotFoundQueryExecutionResult<Account>()
+            var mappedAccount = mapper.Map<Account>(queryResult);
+
+            return mappedAccount == null
+                ? (IQueryExecutionResult<Account>)"Problem retrieving account by team name".ToNotFoundQueryExecutionResult<Account>()
                 : new SuccessfulQueryExecutionResult<Account>(mappedAccount);
         }
     }

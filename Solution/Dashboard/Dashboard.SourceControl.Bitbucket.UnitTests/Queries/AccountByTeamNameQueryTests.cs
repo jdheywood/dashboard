@@ -1,4 +1,5 @@
-﻿using Dashboard.Core.Contracts;
+﻿using System;
+using Dashboard.Core.Contracts;
 using Dashboard.Core.Query;
 using Dashboard.SourceControl.Bitbucket.Contracts;
 using Dashboard.SourceControl.Bitbucket.Entities;
@@ -10,39 +11,39 @@ using Ploeh.AutoFixture;
 
 namespace Dashboard.SourceControl.Bitbucket.UnitTests.Queries
 {
-    public class AccountByUserNameQueryTests
+    public class AccountByTeamNameQueryTests
     {
         private IBitbucketClient bitbucketClient;
         private IMapper mapper;
-        private AccountByUserNameQuery accountByUserNameQuery;
+        private AccountByTeamNameQuery accountByTeamNameQuery;
 
         [SetUp]
         public void SetUp()
         {
-            mapper = Substitute.For<IMapper>();
             bitbucketClient = Substitute.For<IBitbucketClient>();
+            mapper = Substitute.For<IMapper>();
 
-            accountByUserNameQuery = new AccountByUserNameQuery(bitbucketClient, mapper);
+            accountByTeamNameQuery = new AccountByTeamNameQuery(bitbucketClient, mapper);
         }
 
-        public class Execute : AccountByUserNameQueryTests
+        public class Execute : AccountByTeamNameQueryTests
         {
             [Test]
-            public void When_Called_With_Valid_Individual_Account_Name_Returns_SuccessfulQueryExecutionResult_With_Populated_Account_Object()
+            public void When_Called_With_A_Valid_Team_Name_Returns_SuccessfulQueryExecutionResult_With_Populated_Account_Object()
             {
                 // Arrange
                 var fixture = new Fixture();
 
-                var userName = fixture.Create("valid-username");
-                var result = fixture.Create<AccountByUserNameQueryResult>();
+                var teamName = fixture.Create("valid-teamname");
+                var result = fixture.Create<AccountByTeamNameQueryResult>();
                 var account = fixture.Create<Account>();
 
-                bitbucketClient.GetUserAccount(userName).Returns(result);
+                bitbucketClient.GetTeamAccount(teamName).Returns(result);
 
-                mapper.Map<Account>(Arg.Is(result)).Returns(account);
+                mapper.Map<Account>(result).Returns(account);
 
                 // Act
-                var actualResult = accountByUserNameQuery.Execute(userName);
+                var actualResult = accountByTeamNameQuery.Execute(teamName);
 
                 // Assert
                 Assert.IsInstanceOf<SuccessfulQueryExecutionResult<Account>>(actualResult);
@@ -50,26 +51,25 @@ namespace Dashboard.SourceControl.Bitbucket.UnitTests.Queries
             }
 
             [Test]
-            public void When_Called_With_Invalid_Individual_Account_Name_Returns_NotFoundErrorQueryExecutionResult()
+            public void When_Called_With_An_Invalid_Team_Name_Returns_NotFoundErrorQueryExecutionResult()
             {
                 // Arrange
                 var fixture = new Fixture();
 
-                var userName = fixture.Create("invalid-username");
-                AccountByUserNameQueryResult result = null;
+                var teamName = fixture.Create("invalid-teamname");
+                AccountByTeamNameQueryResult result = null;
                 Account account = null;
 
-                bitbucketClient.GetUserAccount(userName).Returns(result);
+                bitbucketClient.GetTeamAccount(teamName).Returns(result);
 
                 mapper.Map<Account>(result).Returns(account);
 
                 // Act
-                var actualResult = accountByUserNameQuery.Execute(userName);
+                var actualResult = accountByTeamNameQuery.Execute(teamName);
 
                 // Assert
                 Assert.IsInstanceOf<NotFoundErrorQueryExecutionResult<Account>>(actualResult);
             }
         }
-
     }
 }
