@@ -14,8 +14,6 @@ namespace Dashboard.Web
     {
         public static Container RegisterDependencies(Container container)
         {
-            // TODO register other types of thing here
-
             var bitbucketAssembly = typeof (BitbucketClient).Assembly;
             var coreAssembly = typeof(HttpClient).Assembly;
 
@@ -37,32 +35,12 @@ namespace Dashboard.Web
                 container.Register(reg.Item, reg.Implementation, Lifestyle.Transient);
             }
 
-            // container.Register()
-
-            //container.Register(concreteType: Classes.FromThisAssembly()
-            //    .BasedOn<Profile>()
-            //    .WithService.Base()
-            //    .Configure(c => c.Named(c.Implementation.FullName))
-            //    .LifestyleTransient());
-
-            // container.Register<Profile, BitbucketToDomainMappingProfile>(Lifestyle.Transient);
-
-            //var mappingProfiles =
-            //    bitbucketAssembly.GetExportedTypes()
-            //        .Where(type => type.IsSubclassOf(typeof(Profile)))
-            //        .Select(type => new { mapping = type, Implementation = type });
-            
-            //foreach (var profile in mappingProfiles)
-            //{
-            //    container.Register(profile.mapping, profile.Implementation, Lifestyle.Transient);
-            //}
-
             ConfigureAutoMapper(container);
             
             return container;
         }
 
-        public static void ConfigureAutoMapper(Container container)
+        private static void ConfigureAutoMapper(Container container)
         {
             container.RegisterAll<Profile>(new BitbucketToDomainMappingProfile());
 
