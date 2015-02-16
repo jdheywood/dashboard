@@ -35,6 +35,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{FAD1F5B8-2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dashboard.Core", "Dashboard.Core\Dashboard.Core.csproj", "{48A74254-B3FF-41FF-806B-48D5D5225631}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{85B38968-E09F-4701-B0FF-4C253D12B700}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dashboard.Api", "Dashboard.Api\Dashboard.Api.csproj", "{8B3F4A52-0956-4AA4-BE45-2CE894960337}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{7C279A7A-17B8-417F-A102-DF6D7BDCF038}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\AzureWebAppPublishModule.psm1 = PublishScripts\AzureWebAppPublishModule.psm1
+		PublishScripts\Publish-WebApplication.ps1 = PublishScripts\Publish-WebApplication.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{77717999-E9DC-44CC-AB71-C94E5C423682}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Configurations\DashboardApi-WAWS-dev.json = PublishScripts\Configurations\DashboardApi-WAWS-dev.json
+		PublishScripts\Configurations\DashboardSpa-WAWS-dev.json = PublishScripts\Configurations\DashboardSpa-WAWS-dev.json
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dashboard.Spa", "Dashboard.Spa\Dashboard.Spa.csproj", "{CAF16884-6841-4EED-B3F3-01EA2E77976A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +87,14 @@ Global
 		{48A74254-B3FF-41FF-806B-48D5D5225631}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48A74254-B3FF-41FF-806B-48D5D5225631}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48A74254-B3FF-41FF-806B-48D5D5225631}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B3F4A52-0956-4AA4-BE45-2CE894960337}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B3F4A52-0956-4AA4-BE45-2CE894960337}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B3F4A52-0956-4AA4-BE45-2CE894960337}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B3F4A52-0956-4AA4-BE45-2CE894960337}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAF16884-6841-4EED-B3F3-01EA2E77976A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAF16884-6841-4EED-B3F3-01EA2E77976A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAF16884-6841-4EED-B3F3-01EA2E77976A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAF16884-6841-4EED-B3F3-01EA2E77976A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,6 +107,9 @@ Global
 		{CEB2A052-6644-4FC5-B84E-109A2341485D} = {10DB30AD-F6EE-46FB-84B3-DB4C668F90F9}
 		{E4FE77B7-91E9-4FE7-9BC3-7697D78E9308} = {10DB30AD-F6EE-46FB-84B3-DB4C668F90F9}
 		{8D6B2E0C-E46B-449A-BE11-E6C8234B0A21} = {95267E2B-866D-45C0-AAF6-90FF5D148333}
+		{CAF16884-6841-4EED-B3F3-01EA2E77976A} = {95267E2B-866D-45C0-AAF6-90FF5D148333}
 		{48A74254-B3FF-41FF-806B-48D5D5225631} = {FAD1F5B8-25B4-4815-99E0-AA7A4616A3EF}
+		{8B3F4A52-0956-4AA4-BE45-2CE894960337} = {85B38968-E09F-4701-B0FF-4C253D12B700}
+		{77717999-E9DC-44CC-AB71-C94E5C423682} = {7C279A7A-17B8-417F-A102-DF6D7BDCF038}
 	EndGlobalSection
 EndGlobal
