@@ -2,7 +2,7 @@
 using System.Linq;
 using AutoMapper;
 using Dashboard.SourceControl.Bitbucket.Entities;
-using Dashboard.SourceControl.Contracts;
+using Dashboard.SourceControl.Constants;
 using Dashboard.SourceControl.Entities;
 using AccountLink = Dashboard.SourceControl.Entities.AccountLink;
 
@@ -30,9 +30,6 @@ namespace Dashboard.SourceControl.Bitbucket.Mapping
                     options => options.MapFrom(
                         source => source.Links
                             .Select(kvp => new AccountLink() {Title = kvp.Key, Href = kvp.Value.Href})));
-            // TODO map links here, could be fun!
-
-            // source.New((PaymentMethodType)Enum.Parse(typeof(PaymentMethodType), paymentMethod, true));
         }
     }
 }

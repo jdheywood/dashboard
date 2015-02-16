@@ -63,7 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\AccountType.cs" />
+    <Compile Include="Constants\AccountType.cs" />
     <Compile Include="Contracts\IAccountByTeamNameQuery.cs" />
     <Compile Include="Contracts\IAccountByUserNameQuery.cs" />
     <Compile Include="Entities\Account.cs" />

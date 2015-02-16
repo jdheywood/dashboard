@@ -1,4 +1,4 @@
-﻿namespace Dashboard.SourceControl.Contracts
+﻿namespace Dashboard.SourceControl.Constants
 {
     public enum AccountType
     {

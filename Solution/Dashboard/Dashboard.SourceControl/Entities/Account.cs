@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Dashboard.SourceControl.Contracts;
+using Dashboard.SourceControl.Constants;
 
 namespace Dashboard.SourceControl.Entities
 {
