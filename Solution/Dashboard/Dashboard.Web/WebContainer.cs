@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using AutoMapper;
 using Dashboard.Core.Http;
 using Dashboard.SourceControl.Bitbucket.Clients;
+using Dashboard.SourceControl.Bitbucket.Mapping;
 using SimpleInjector;
+using Mapper = AutoMapper.Mapper;
 
 namespace Dashboard.Web
 {
@@ -34,7 +37,46 @@ namespace Dashboard.Web
                 container.Register(reg.Item, reg.Implementation, Lifestyle.Transient);
             }
 
+            // container.Register()
+
+            //container.Register(concreteType: Classes.FromThisAssembly()
+            //    .BasedOn<Profile>()
+            //    .WithService.Base()
+            //    .Configure(c => c.Named(c.Implementation.FullName))
+            //    .LifestyleTransient());
+
+            // container.Register<Profile, BitbucketToDomainMappingProfile>(Lifestyle.Transient);
+
+            //var mappingProfiles =
+            //    bitbucketAssembly.GetExportedTypes()
+            //        .Where(type => type.IsSubclassOf(typeof(Profile)))
+            //        .Select(type => new { mapping = type, Implementation = type });
+            
+            //foreach (var profile in mappingProfiles)
+            //{
+            //    container.Register(profile.mapping, profile.Implementation, Lifestyle.Transient);
+            //}
+
+            ConfigureAutoMapper(container);
+            
             return container;
+        }
+
+        public static void ConfigureAutoMapper(Container container)
+        {
+            container.RegisterAll<Profile>(new BitbucketToDomainMappingProfile());
+
+            Mapper.Initialize(x =>
+            {
+                var profiles = container.GetAllInstances<Profile>();
+
+                foreach (var profile in profiles)
+                {
+                    x.AddProfile(profile);
+                }
+            });
+
+            Mapper.AssertConfigurationIsValid();
         }
     }
 }

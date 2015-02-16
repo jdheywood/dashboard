@@ -18,7 +18,7 @@ namespace Dashboard.Web.Controllers
 
             var account = accountByUserNameQuery.Execute("jdheywood");
 
-            return View();
+            return View(account.Result);
         }
 
         public ActionResult About()

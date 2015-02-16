@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Dashboard.SourceControl.Entities.Account
+
+@{
     ViewBag.Title = "Home Page";
 }
 @section featured {
@@ -15,6 +17,16 @@
                 If you have any questions about ASP.NET MVC visit
                 <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">our forums</a>.
             </p>
+            <h3>
+                Your account model looks like this;         
+            </h3>
+            <ul>
+                <li>Username: @Model.Username</li>
+                <li>AccountType: @Model.AccountType</li>
+                <li>Website: @Model.Website</li>
+                <li>DisplayName: @Model.DisplayName</li>
+                <li>CreatedOn: @Model.CreatedOn</li>
+            </ul>
         </div>
     </section>
 }
