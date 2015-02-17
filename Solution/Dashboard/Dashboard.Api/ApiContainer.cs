@@ -35,9 +35,7 @@ namespace Dashboard.Api
 
         private static void ConfigureAutoMapper(Container container)
         {
-            container.RegisterAll<Profile>(new BitbucketToDomainMappingProfile());
-            // TO DO resolve this override issue 
-            container.RegisterAll<Profile>(new DomainToDtoMappingProfile());
+            container.RegisterAll<Profile>(new BitbucketToDomainMappingProfile(), new DomainToDtoMappingProfile());
 
             Mapper.Initialize(x =>
             {
