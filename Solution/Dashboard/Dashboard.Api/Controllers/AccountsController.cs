@@ -6,6 +6,7 @@ using Dashboard.SourceControl.Contracts;
 
 namespace Dashboard.Api.Controllers
 {
+    [RoutePrefix("api")]
     public class AccountsController : ApiController
     {
         private readonly IAccountByUserNameQuery accountByUserNameQuery;
@@ -21,14 +22,14 @@ namespace Dashboard.Api.Controllers
             this.mapper = mapper;
         }
 
-        [Route("api/accounts")]
+        [Route("accounts")]
         [HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        [Route("api/accounts/{accountName}")]
+        [Route("accounts/{accountName}")]
         [HttpGet]
         public IHttpActionResult Get(string accountName)
         {
