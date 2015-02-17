@@ -18,8 +18,7 @@ namespace Dashboard.Api
     {
         public static Container RegisterDependencies(Container container)
         {
-            // Register your types, for instance using the RegisterWebApiRequest
-            // extension from the integration package:
+            // Register your types, for instance using the RegisterWebApiRequest extension from the integration package:
             container.RegisterWebApiRequest<IAccountByUserNameQuery, AccountByUserNameQuery>();
             container.RegisterWebApiRequest<IBitbucketClient, BitbucketClient>();
             container.RegisterWebApiRequest<IBitbucketConfigurationFactory, BitbucketConfigurationFactory>();
@@ -27,6 +26,8 @@ namespace Dashboard.Api
             container.RegisterWebApiRequest<IConfigurationRepository, ConfigurationRepository>();
             container.RegisterWebApiRequest<IMapper, Core.Mapping.Mapper>();
             container.RegisterWebApiRequest<IHttpActionResultFactory, HttpActionResultFactory>();
+
+            // TODO find a better way to register the above
 
             ConfigureAutoMapper(container);
             

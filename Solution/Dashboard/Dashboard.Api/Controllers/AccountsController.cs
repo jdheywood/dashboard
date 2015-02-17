@@ -38,7 +38,6 @@ namespace Dashboard.Api.Controllers
             return !accountResult.IsSuccessful
                 ? httpActionResultFactory.Create(accountResult, Request)
                 : Ok(mapper.Map<AccountResponseDto>(accountResult.Result));
-
         }
     }
 }
