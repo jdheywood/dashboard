@@ -122,3 +122,7 @@ BuildArtifacts
 
 # git origin files
 *.orig*
+
+# local database files & logs
+*.mdf
+*.ldf
