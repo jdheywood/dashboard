@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Http;
 using Dashboard.Api.Models;
+using Dashboard.Core.ActionResult;
 using Dashboard.Core.Contracts;
 using Dashboard.SourceControl.Contracts;
 
@@ -10,14 +12,17 @@ namespace Dashboard.Api.Controllers
     public class AccountsController : ApiController
     {
         private readonly IAccountByUserNameQuery accountByUserNameQuery;
+        private readonly IAccountByTeamNameQuery accountByTeamNameQuery;
         private readonly IHttpActionResultFactory httpActionResultFactory;
         private readonly IMapper mapper;
 
         public AccountsController(IAccountByUserNameQuery accountByUserNameQuery,
+            IAccountByTeamNameQuery accountByTeamNameQuery,
             IHttpActionResultFactory httpActionResultFactory,
             IMapper mapper)
         {
             this.accountByUserNameQuery = accountByUserNameQuery;
+            this.accountByTeamNameQuery = accountByTeamNameQuery;
             this.httpActionResultFactory = httpActionResultFactory;
             this.mapper = mapper;
         }
@@ -33,11 +38,25 @@ namespace Dashboard.Api.Controllers
         [HttpGet]
         public IHttpActionResult Get(string accountName)
         {
-            var accountResult = accountByUserNameQuery.Execute(accountName);
+            try
+            {
+                var accountResult = accountByUserNameQuery.Execute(accountName);
 
-            return !accountResult.IsSuccessful
-                ? httpActionResultFactory.Create(accountResult, Request)
-                : Ok(mapper.Map<AccountResponseDto>(accountResult.Result));
+                if (!accountResult.IsSuccessful)
+                {
+                    accountResult = accountByTeamNameQuery.Execute(accountName);
+                }
+
+                return !accountResult.IsSuccessful
+                    ? httpActionResultFactory.Create(accountResult, Request)
+                    : Ok(mapper.Map<AccountResponseDto>(accountResult.Result));
+            }
+            catch (Exception ex)
+            {
+                // TODO Introduce logging for this
+            }
+
+            return new NoContent(Request);
         }
     }
 }

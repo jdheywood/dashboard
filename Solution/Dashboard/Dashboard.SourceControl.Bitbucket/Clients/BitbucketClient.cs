@@ -19,20 +19,38 @@ namespace Dashboard.SourceControl.Bitbucket.Clients
 
         public AccountByUserNameQueryResult GetUserAccount(string userName)
         {
-            var configuration = bitbucketConfigurationFactory.Create();
+            try
+            {
+                var configuration = bitbucketConfigurationFactory.Create();
 
-            var jsonResult = httpClient.GetJson(String.Format("{0}/{1}", configuration.BitbucketApiEndPointUsers, userName), configuration.BitbucketApiTimeoutSeconds);
+                var jsonResult = httpClient.GetJson(String.Format("{0}/{1}", configuration.BitbucketApiEndPointUsers, userName), configuration.BitbucketApiTimeoutSeconds);
 
-            return jsonResult.FromJson<AccountByUserNameQueryResult>();
+                return jsonResult.FromJson<AccountByUserNameQueryResult>();
+            }
+            catch (Exception ex)
+            {
+                // TODO Add logging
+            }
+            
+            return null;
         }
 
         public AccountByTeamNameQueryResult GetTeamAccount(string teamName)
         {
-            var configuration = bitbucketConfigurationFactory.Create();
+            try
+            {
+                var configuration = bitbucketConfigurationFactory.Create();
 
-            var jsonResult = httpClient.GetJson(configuration.BitbucketApiEndPointTeams, configuration.BitbucketApiTimeoutSeconds);
+                var jsonResult = httpClient.GetJson(String.Format("{0}/{1}", configuration.BitbucketApiEndPointTeams, teamName), configuration.BitbucketApiTimeoutSeconds);
 
-            return jsonResult.FromJson<AccountByTeamNameQueryResult>();
+                return jsonResult.FromJson<AccountByTeamNameQueryResult>();
+            }
+            catch (Exception)
+            {
+                // TODO Add logging
+            }
+            
+            return null;
         }
 
         public string GetRepository(string repositoryName)
