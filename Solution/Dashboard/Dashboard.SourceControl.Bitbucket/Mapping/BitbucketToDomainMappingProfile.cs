@@ -25,7 +25,20 @@ namespace Dashboard.SourceControl.Bitbucket.Mapping
         private static void MapBitbucketToDomain()
         {
             Mapper.CreateMap<AccountByUserNameQueryResult, Account>()
-                .ForMember(destination => destination.AccountType, options => options.MapFrom(source => (AccountType)Enum.Parse(typeof(AccountType), source.Type, true)))
+                .ForMember(destination => destination.Name, options => options.MapFrom(source => source.Username))
+                .ForMember(destination => destination.AccountType,
+                    options =>
+                        options.MapFrom(source => (AccountType) Enum.Parse(typeof (AccountType), source.Type, true)))
+                .ForMember(destination => destination.Links,
+                    options => options.MapFrom(
+                        source => source.Links
+                            .Select(kvp => new AccountLink() {Title = kvp.Key, Href = kvp.Value.Href})));
+
+            Mapper.CreateMap<AccountByTeamNameQueryResult, Account>()
+                .ForMember(destination => destination.Name, options => options.MapFrom(source => source.Username))
+                .ForMember(destination => destination.AccountType,
+                    options =>
+                        options.MapFrom(source => (AccountType) Enum.Parse(typeof (AccountType), source.Type, true)))
                 .ForMember(destination => destination.Links,
                     options => options.MapFrom(
                         source => source.Links

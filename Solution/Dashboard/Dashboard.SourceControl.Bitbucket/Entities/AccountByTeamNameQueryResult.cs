@@ -10,9 +10,9 @@ namespace Dashboard.SourceControl.Bitbucket.Entities
         public string Id { get; set; }
 
         [JsonProperty("username")]
-        public string TeamName { get; set; }
+        public string Username { get; set; }
 
-        [JsonProperty("kind")]
+        [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("website")]
