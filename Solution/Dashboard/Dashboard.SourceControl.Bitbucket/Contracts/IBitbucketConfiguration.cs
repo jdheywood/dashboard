@@ -13,5 +13,7 @@
         string BitbucketApiEndPointUsers { get; }
 
         string BitbucketApiEndPointTeams { get; }
+
+        string BitbucketApiEndPointRepositories { get; }
     }
 }

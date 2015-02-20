@@ -15,5 +15,7 @@ namespace Dashboard.SourceControl.Bitbucket.Configuration
         public string BitbucketApiEndPointUsers { get; set; }
 
         public string BitbucketApiEndPointTeams { get; set; }
+        
+        public string BitbucketApiEndPointRepositories { get; set; }
     }
 }

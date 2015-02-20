@@ -66,8 +66,10 @@
     <Compile Include="Constants\AccountType.cs" />
     <Compile Include="Contracts\IAccountByTeamNameQuery.cs" />
     <Compile Include="Contracts\IAccountByUserNameQuery.cs" />
+    <Compile Include="Contracts\IRepositoriesByAccountNameQuery.cs" />
     <Compile Include="Entities\Account.cs" />
     <Compile Include="Entities\AccountLink.cs" />
+    <Compile Include="Entities\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

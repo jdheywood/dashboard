@@ -7,7 +7,7 @@ namespace Dashboard.SourceControl.Bitbucket.Contracts
         AccountByUserNameQueryResult GetUserAccount(string userName);
         
         AccountByTeamNameQueryResult GetTeamAccount(string teamName);
-        
-        string GetRepository(string repositoryName);
+
+        RepositoriesByAccountNameQueryResult GetAccountRepositories(string accountName);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using Dashboard.Core.Contracts;
 using Dashboard.Core.Extensions;
 using Dashboard.SourceControl.Bitbucket.Contracts;
@@ -53,11 +54,26 @@ namespace Dashboard.SourceControl.Bitbucket.Clients
             return null;
         }
 
-        public string GetRepository(string repositoryName)
+        public RepositoriesByAccountNameQueryResult GetAccountRepositories(string accountName)
         {
-            // TODO wire up to return httpClient.GetJson(...)
+            try
+            {
+                var configuration = bitbucketConfigurationFactory.Create();
 
-            throw new NotImplementedException();
+                var credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes(String.Format("{0}:{1}", configuration.BitbucketUsername, configuration.BitbucketPassword)));
+            
+                var basicAuthorisationHeader = new Tuple<string, string>("Authorization", String.Format("Basic {0}", credentials));
+
+                var jsonResult = httpClient.GetJson("TODO: set up config for repo endpoint", configuration.BitbucketApiTimeoutSeconds, new[] { basicAuthorisationHeader });
+
+                return jsonResult.FromJson<RepositoriesByAccountNameQueryResult>();
+            }
+            catch (Exception)
+            {
+                // TODO Add logging
+            }
+
+            return null;
         }
     }
 }
