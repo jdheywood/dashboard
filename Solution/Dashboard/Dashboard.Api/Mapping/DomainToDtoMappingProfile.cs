@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using AutoMapper;
 using Dashboard.Api.Models;
 using Dashboard.SourceControl.Entities;
 
@@ -9,6 +10,10 @@ namespace Dashboard.Api.Mapping
         protected override void Configure()
         {
             Mapper.CreateMap<Account, AccountResponseDto>();
+
+            Mapper.CreateMap<IEnumerable<Repository>, IEnumerable<RepositoryResponseDto>>();
+
+            Mapper.CreateMap<Repository, RepositoryResponseDto>();
         }
     }
 }

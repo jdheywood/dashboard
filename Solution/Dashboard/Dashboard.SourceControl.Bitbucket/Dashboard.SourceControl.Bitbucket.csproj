@@ -72,10 +72,7 @@
     <Compile Include="Entities\AccountByTeamNameQueryResult.cs" />
     <Compile Include="Entities\AccountByUserNameQueryResult.cs" />
     <Compile Include="Entities\AccountLink.cs" />
-    <Compile Include="Entities\Commit.cs" />
-    <Compile Include="Entities\Description.cs" />
-    <Compile Include="Entities\Event.cs" />
-    <Compile Include="Entities\EventsQueryResult.cs" />
+    <Compile Include="Entities\Owner.cs" />
     <Compile Include="Entities\RepositoriesByAccountNameQueryResult.cs" />
     <Compile Include="Entities\Repository.cs" />
     <Compile Include="Factories\BitbucketConfigurationFactory.cs" />

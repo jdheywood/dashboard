@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web.Http;
 using Dashboard.Api.Models;
 using Dashboard.Core.ActionResult;
@@ -25,13 +24,6 @@ namespace Dashboard.Api.Controllers
             this.accountByTeamNameQuery = accountByTeamNameQuery;
             this.httpActionResultFactory = httpActionResultFactory;
             this.mapper = mapper;
-        }
-
-        [Route("accounts")]
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
         }
 
         [Route("accounts/{accountName}")]

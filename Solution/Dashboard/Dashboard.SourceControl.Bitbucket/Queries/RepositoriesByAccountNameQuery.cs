@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using Castle.Core.Internal;
 using Dashboard.Core.Contracts;
 using Dashboard.Core.Extensions;
 using Dashboard.Core.Query;
@@ -23,9 +25,9 @@ namespace Dashboard.SourceControl.Bitbucket.Queries
         {
             var queryResult = bitbucketClient.GetAccountRepositories(accountName);
 
-            var mappedRepositories = mapper.Map<IEnumerable<Repository>>(queryResult);
+            var mappedRepositories = queryResult.Repositories.Select(repository => mapper.Map<Repository>(repository)).ToList();
 
-            return mappedRepositories == null
+            return mappedRepositories.IsNullOrEmpty()
                 ? (IQueryExecutionResult<IEnumerable<Repository>>)"Problem retrieving repositories for account name".ToNotFoundQueryExecutionResult<IEnumerable<Repository>>()
                 : new SuccessfulQueryExecutionResult<IEnumerable<Repository>>(mappedRepositories);
         }

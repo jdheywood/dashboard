@@ -21,6 +21,7 @@ namespace Dashboard.Api
             // Register your types, for instance using the RegisterWebApiRequest extension from the integration package:
             container.RegisterWebApiRequest<IAccountByUserNameQuery, AccountByUserNameQuery>();
             container.RegisterWebApiRequest<IAccountByTeamNameQuery, AccountByTeamNameQuery>();
+            container.RegisterWebApiRequest<IRepositoriesByAccountNameQuery, RepositoriesByAccountNameQuery>();
             container.RegisterWebApiRequest<IBitbucketClient, BitbucketClient>();
             container.RegisterWebApiRequest<IBitbucketConfigurationFactory, BitbucketConfigurationFactory>();
             container.RegisterWebApiRequest<IHttpClient, HttpClient>();

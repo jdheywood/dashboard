@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Dashboard.SourceControl.Bitbucket.Entities;
@@ -43,6 +44,9 @@ namespace Dashboard.SourceControl.Bitbucket.Mapping
                     options => options.MapFrom(
                         source => source.Links
                             .Select(kvp => new AccountLink() {Title = kvp.Key, Href = kvp.Value.Href})));
+
+            // TODO Map these fuckers
+            Mapper.CreateMap<RepositoriesByAccountNameQueryResult, IEnumerable<SourceControl.Entities.Repository>>();
         }
     }
 }

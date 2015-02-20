@@ -46,7 +46,7 @@ namespace Dashboard.SourceControl.Bitbucket.Clients
 
                 return jsonResult.FromJson<AccountByTeamNameQueryResult>();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // TODO Add logging
             }
@@ -60,15 +60,15 @@ namespace Dashboard.SourceControl.Bitbucket.Clients
             {
                 var configuration = bitbucketConfigurationFactory.Create();
 
-                var credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes(String.Format("{0}:{1}", configuration.BitbucketUsername, configuration.BitbucketPassword)));
-            
-                var basicAuthorisationHeader = new Tuple<string, string>("Authorization", String.Format("Basic {0}", credentials));
+                //var credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes(String.Format("{0}:{1}", configuration.BitbucketUsername, configuration.BitbucketPassword)));
+                //var basicAuthorisationHeader = new Tuple<string, string>("Authorization", String.Format("Basic {0}", credentials));
+                //var jsonResult = httpClient.GetJson(String.Format("{0}/{1}", configuration.BitbucketApiEndPointRepositories, accountName), configuration.BitbucketApiTimeoutSeconds, new[] { basicAuthorisationHeader });
 
-                var jsonResult = httpClient.GetJson("TODO: set up config for repo endpoint", configuration.BitbucketApiTimeoutSeconds, new[] { basicAuthorisationHeader });
+                var jsonResult = httpClient.GetJson(String.Format("{0}/{1}", configuration.BitbucketApiEndPointRepositories, accountName), configuration.BitbucketApiTimeoutSeconds);
 
                 return jsonResult.FromJson<RepositoriesByAccountNameQueryResult>();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // TODO Add logging
             }
