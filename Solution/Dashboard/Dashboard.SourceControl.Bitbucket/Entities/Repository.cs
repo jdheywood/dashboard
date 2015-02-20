@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Dashboard.SourceControl.Bitbucket.Entities
 {
     public class Repository
     {
-        // TODO identify which fields can be turned into enums
+        // TODO identify which fields can be turned into enums and do so in domain entity (not here)
 
         [JsonProperty("scm")]
         public string SourceControlManager { get; set; }
@@ -18,7 +17,7 @@ namespace Dashboard.SourceControl.Bitbucket.Entities
         public string Description { get; set; }
 
         [JsonProperty("links")]
-        public Dictionary<string, AccountLink> Links { get; set; } // TODO replace with a RepositoryLinks object as per returned json (clone array in this breaks deserialisation to AccountLinks)
+        public RepositoryLinks Links { get; set; }
 
         [JsonProperty("fork_policy")]
         public string ForkPolicy { get; set; }

@@ -75,6 +75,8 @@
     <Compile Include="Entities\Owner.cs" />
     <Compile Include="Entities\RepositoriesByAccountNameQueryResult.cs" />
     <Compile Include="Entities\Repository.cs" />
+    <Compile Include="Entities\RepositoryLink.cs" />
+    <Compile Include="Entities\RepositoryLinks.cs" />
     <Compile Include="Factories\BitbucketConfigurationFactory.cs" />
     <Compile Include="Mapping\BitbucketToDomainMappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
