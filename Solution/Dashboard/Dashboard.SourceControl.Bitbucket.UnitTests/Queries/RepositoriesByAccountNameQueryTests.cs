@@ -39,18 +39,30 @@ namespace Dashboard.SourceControl.Bitbucket.UnitTests.Queries
 
                 var accountName = fixture.Create("valid-accountname");
                 var result = fixture.Create<RepositoriesByAccountNameQueryResult>();
-                var repositories = fixture.Create<IEnumerable<SourceControl.Entities.Repository>>();
 
                 bitbucketClient.GetAccountRepositories(accountName).Returns(result);
 
-                mapper.Map<IEnumerable<SourceControl.Entities.Repository>>(result).Returns(repositories);
+                //mapper.Map<IEnumerable<SourceControl.Entities.Repository>>(result).Returns(repositories);
+                var expectedRepositoriesList = result.Repositories.Select(unMappedRepository => SetUpMappedRepository(fixture, unMappedRepository)).ToList();
 
                 // Act
                 var actualResult = repositoriesByAccountNameQuery.Execute(accountName);
+                var actualResultRepositoriesList = actualResult.Result.ToList();
 
                 // Assert
                 Assert.IsInstanceOf<SuccessfulQueryExecutionResult<IEnumerable<SourceControl.Entities.Repository>>>(actualResult);
-                Assert.AreEqual(repositories, actualResult.Result);
+
+                for (var i = 0; i < expectedRepositoriesList.Count; i++)
+                {
+                    Assert.AreEqual(expectedRepositoriesList[i], actualResultRepositoriesList[i]);
+                }
+            }
+
+            private SourceControl.Entities.Repository SetUpMappedRepository(Fixture fixture, Repository unMappedRepository)
+            {
+                var mappedRepository = fixture.Create<SourceControl.Entities.Repository>();
+                mapper.Map<SourceControl.Entities.Repository>(unMappedRepository).Returns(mappedRepository);
+                return mappedRepository;
             }
         }
     }
