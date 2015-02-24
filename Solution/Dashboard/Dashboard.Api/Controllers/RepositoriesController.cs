@@ -34,7 +34,7 @@ namespace Dashboard.Api.Controllers
 
                 return !repositoriesResult.IsSuccessful
                     ? httpActionResultFactory.Create(repositoriesResult, Request)
-                    : Ok(mapper.Map<IEnumerable<RepositoryResponseDto>>(repositoriesResult));
+                    : Ok(mapper.Map<IEnumerable<RepositoryResponseDto>>(repositoriesResult.Result));
             }
             catch (Exception ex)
             {

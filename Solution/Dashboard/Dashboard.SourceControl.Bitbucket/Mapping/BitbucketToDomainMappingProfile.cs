@@ -6,6 +6,7 @@ using Dashboard.SourceControl.Bitbucket.Entities;
 using Dashboard.SourceControl.Constants;
 using Dashboard.SourceControl.Entities;
 using AccountLink = Dashboard.SourceControl.Entities.AccountLink;
+using Repository = Dashboard.SourceControl.Bitbucket.Entities.Repository;
 
 namespace Dashboard.SourceControl.Bitbucket.Mapping
 {
@@ -45,8 +46,9 @@ namespace Dashboard.SourceControl.Bitbucket.Mapping
                         source => source.Links
                             .Select(kvp => new AccountLink() {Title = kvp.Key, Href = kvp.Value.Href})));
 
-            // TODO Map these fuckers
+            // TODO Map more properties from these as and when needed
             Mapper.CreateMap<RepositoriesByAccountNameQueryResult, IEnumerable<SourceControl.Entities.Repository>>();
+            Mapper.CreateMap<Repository, SourceControl.Entities.Repository>();
         }
     }
 }

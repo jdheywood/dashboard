@@ -10,10 +10,16 @@ namespace Dashboard.Api.Mapping
         protected override void Configure()
         {
             Mapper.CreateMap<Account, AccountResponseDto>();
-
-            Mapper.CreateMap<IEnumerable<Repository>, IEnumerable<RepositoryResponseDto>>();
-
+            
             Mapper.CreateMap<Repository, RepositoryResponseDto>();
+
+            Mapper.CreateMap<IEnumerable<Repository>, RepositoriesResponseDto>()
+                .ConvertUsing(
+                    source =>
+                        new RepositoriesResponseDto
+                        {
+                            Repositories = Mapper.Map<IEnumerable<RepositoryResponseDto>>(source)
+                        });
         }
     }
 }

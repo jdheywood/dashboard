@@ -196,6 +196,7 @@
     </Compile>
     <Compile Include="Mapping\DomainToDtoMappingProfile.cs" />
     <Compile Include="Models\AccountResponseDto.cs" />
+    <Compile Include="Models\RepositoriesResponseDto.cs" />
     <Compile Include="Models\RepositoryResponseDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
