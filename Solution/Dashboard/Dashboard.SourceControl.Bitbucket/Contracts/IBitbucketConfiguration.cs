@@ -2,6 +2,10 @@
 {
     public interface IBitbucketConfiguration
     {
+        string BitbucketConsumerKey { get; }
+
+        string BitbucketConsumerSecret { get; }
+
         string BitbucketPassword { get; }
 
         string BitbucketUsername { get; }
@@ -15,5 +19,7 @@
         string BitbucketApiEndPointTeams { get; }
 
         string BitbucketApiEndPointRepositories { get; }
+
+        string BitbucketApiEndPointTokenRequest { get; }
     }
 }

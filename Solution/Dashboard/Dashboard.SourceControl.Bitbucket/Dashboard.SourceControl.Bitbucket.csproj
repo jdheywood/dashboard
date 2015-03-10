@@ -77,6 +77,7 @@
     <Compile Include="Entities\Repository.cs" />
     <Compile Include="Entities\RepositoryLink.cs" />
     <Compile Include="Entities\RepositoryLinks.cs" />
+    <Compile Include="Entities\RequestTokenCredentials.cs" />
     <Compile Include="Factories\BitbucketConfigurationFactory.cs" />
     <Compile Include="Mapping\BitbucketToDomainMappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

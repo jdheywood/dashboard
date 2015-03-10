@@ -6,6 +6,8 @@ namespace Dashboard.SourceControl.Bitbucket.Factories
 {
     public class BitbucketConfigurationFactory : IBitbucketConfigurationFactory
     {
+        private const string BitbucketConsumerKey = "Bitbucket.Consumer.Key";
+        private const string BitbucketConsumerSecret = "Bitbucket.Consumer.Secret";
         private const string BitbucketPassword = "Bitbucket.Password";
         private const string BitbucketUsername = "Bitbucket.Username";
         private const string BitbucketTeamName = "Bitbucket.TeamName";
@@ -13,6 +15,7 @@ namespace Dashboard.SourceControl.Bitbucket.Factories
         private const string BitbucketApiEndPointUsers = "Bitbucket.API.Endpoint.Users"; 
         private const string BitbucketApiEndPointTeams = "Bitbucket.API.Endpoint.Teams";
         private const string BitbucketApiEndPointRepositories = "Bitbucket.API.Endpoint.Repositories";
+        private const string BitbucketApiEndPointTokenRequest = "Bitbucket.API.EndPoint.TokenRequest";
 
         private readonly IConfigurationRepository configurationRepository;
 
@@ -25,6 +28,8 @@ namespace Dashboard.SourceControl.Bitbucket.Factories
         {
             return new BitbucketConfiguration()
             {
+                BitbucketConsumerKey = configurationRepository.GetSimpleSetting<string>(BitbucketConsumerKey),
+                BitbucketConsumerSecret = configurationRepository.GetSimpleSetting<string>(BitbucketConsumerSecret),
                 BitbucketPassword = configurationRepository.GetSimpleSetting<string>(BitbucketPassword),
                 BitbucketUsername = configurationRepository.GetSimpleSetting<string>(BitbucketUsername),
                 BitbucketTeamName = configurationRepository.GetSimpleSetting<string>(BitbucketTeamName),

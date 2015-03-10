@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 using Dashboard.Core.Contracts;
 using Dashboard.Core.Extensions;
 using Dashboard.SourceControl.Bitbucket.Contracts;
@@ -74,6 +73,11 @@ namespace Dashboard.SourceControl.Bitbucket.Clients
             }
 
             return null;
+        }
+
+        public RequestTokenCredentials GetRequestToken(string consumerKey, string nonce, string signature, string signatureMethod, int timeStamp, string callback)
+        {
+            throw new NotImplementedException();
         }
     }
 }
