@@ -10,11 +10,12 @@
 * Set Dashboad.Api project as start up
 * hit F5
 * Open dash.html in dash-poc folder to see ideas for the UI
+
 * TODO:
-** Review js frameworks for integration with Api
-** Build out OAuth for bitbucket
-** Build SPA
-** Integrate API and SPA
+* Review js frameworks for integration with Api
+* Build out OAuth for bitbucket
+* Build SPA
+* Integrate API and SPA
 
 ### Contribution guidelines ###
 
