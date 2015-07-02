@@ -12,8 +12,8 @@
 * Open dash.html in dash-poc folder to see ideas for the UI
 
 * TODO:
-* Review js frameworks for integration with Api
-* Build out OAuth for bitbucket
+* Review js frameworks for integration with API
+* Build out OAuth for bitbucket in API
 * Build SPA
 * Integrate API and SPA
 
