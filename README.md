@@ -24,4 +24,4 @@
 
 ### Who do I talk to? ###
 
-* Repo owner: jdheywood@yahoo.co.uk
+* Repo owner: jdheywood@gmail.com
